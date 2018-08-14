@@ -2,6 +2,12 @@ FROM elixir:alpine
 
 MAINTAINER GSMLG <me@gsmlg.org>
 
+RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new.ez \
+    && mix local.rebar --force \
+    && mix local.hex --force \
+    && apk add git \
+    && apk add make
+
 ENV NODE_VERSION 10.8.0
 
 RUN addgroup -g 1000 node \
@@ -48,9 +54,5 @@ RUN addgroup -g 1000 node \
     && rm -Rf "node-v$NODE_VERSION" \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
 
-
-RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new.ez
-RUN mix local.rebar --force
-RUN mix local.hex --force
 
 ENTRYPOINT ["iex"]
