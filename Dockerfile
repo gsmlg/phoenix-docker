@@ -6,6 +6,7 @@ RUN mix archive.install --force https://github.com/phoenixframework/archives/raw
     && mix local.rebar --force \
     && mix local.hex --force \
     && apk add git \
+    && apk add bash \
     && apk add make
 
 ENV NODE_VERSION 10.8.0
