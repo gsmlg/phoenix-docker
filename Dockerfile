@@ -10,6 +10,7 @@ RUN apk update \
     && mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new.ez \
     && mix local.rebar --force \
     && mix local.hex --force \
+    && apk add nodejs \
     && apk add git \
     && rm -rf /var/cache/apk/*
 
