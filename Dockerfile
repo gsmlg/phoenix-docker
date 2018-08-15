@@ -55,4 +55,4 @@ RUN addgroup -g 1000 node \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
 
 
-ENTRYPOINT ["iex"]
+ENTRYPOINT ["/bin/sh"]
