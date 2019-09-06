@@ -1,4 +1,4 @@
-FROM elixir:1.9
+FROM elixir:1.9-alpine
 
 MAINTAINER GSMLG <me@gsmlg.org>
 
@@ -21,7 +21,7 @@ MAINTAINER GSMLG <me@gsmlg.org>
 #    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
 #  done
 
-ENV NODE_VERSION 12.7.0
+ENV NODE_VERSION 12.10.0
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
