@@ -1,4 +1,4 @@
-FROM elixir:alpine
+FROM elixir:1.9-alpine
 
 MAINTAINER GSMLG <me@gsmlg.org>
 
