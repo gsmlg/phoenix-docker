@@ -1,4 +1,4 @@
-FROM elixir:1.9
+FROM elixir
 
 MAINTAINER GSMLG <me@gsmlg.org>
 
@@ -21,7 +21,7 @@ MAINTAINER GSMLG <me@gsmlg.org>
 #    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
 #  done
 
-ENV NODE_VERSION 12.10.0
+ENV NODE_VERSION 14.2.0
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
@@ -42,7 +42,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
 #    SHASUMS256.txt.asc SHASUMS256.txt \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-ENV YARN_VERSION 1.17.3
+ENV YARN_VERSION 1.22.4
 
 RUN set -ex \
   && for key in \
@@ -62,8 +62,8 @@ RUN set -ex \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
 
-RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 RUN mix local.rebar --force
 RUN mix local.hex --force
+RUN mix archive.install --force hex phx_new
 
 ENTRYPOINT ["iex"]
